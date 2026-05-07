@@ -1,8 +1,8 @@
 import Link from 'next/link'
-import { Hexagon } from 'lucide-react'
 import { siteConfig } from '@/config/site'
 import { ConnectWalletButton } from '@/components/ui/ConnectWalletButton'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
+import { BrandGlyph } from '@/components/ui/BrandGlyph'
 import styles from './SiteHeader.module.css'
 
 const NAV = [
@@ -15,7 +15,7 @@ export function SiteHeader() {
       <div className={styles.inner}>
         <div className={styles.left}>
           <Link href="/" className={styles.brand} aria-label={`${siteConfig.name} home`}>
-            <Hexagon size={18} aria-hidden className={styles.brandGlyph} strokeWidth={1.5} />
+            <BrandGlyph size={18} className={styles.brandGlyph} />
             <span className={styles.brandText}>{siteConfig.name}</span>
           </Link>
           <nav className={styles.nav} aria-label="Primary">
