@@ -5,12 +5,12 @@ import { ThemeProvider } from '@/components/layout/ThemeProvider'
 import { siteConfig } from '@/config/site'
 import './globals.css'
 
-const clashDisplay = localFont({
+const satoshi = localFont({
   src: [
-    { path: '../fonts/ClashDisplay-Regular.woff2', weight: '400', style: 'normal' },
-    { path: '../fonts/ClashDisplay-Medium.woff2', weight: '500', style: 'normal' },
-    { path: '../fonts/ClashDisplay-Semibold.woff2', weight: '600', style: 'normal' },
-    { path: '../fonts/ClashDisplay-Bold.woff2', weight: '700', style: 'normal' },
+    { path: '../fonts/Satoshi-Light.woff2', weight: '300', style: 'normal' },
+    { path: '../fonts/Satoshi-Regular.woff2', weight: '400', style: 'normal' },
+    { path: '../fonts/Satoshi-Medium.woff2', weight: '500', style: 'normal' },
+    { path: '../fonts/Satoshi-Bold.woff2', weight: '700', style: 'normal' },
   ],
   variable: '--font-display',
   display: 'swap',
@@ -40,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${clashDisplay.variable} ${switzer.variable} ${GeistMono.variable}`}
+        className={`${satoshi.variable} ${switzer.variable} ${GeistMono.variable}`}
       >
         <ThemeProvider>{children}</ThemeProvider>
       </body>

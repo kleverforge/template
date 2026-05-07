@@ -278,7 +278,7 @@
 
 /* ==========================================================================
    Design Tokens: Typography
-   Clash Display headings, Switzer body.
+   Satoshi headings, Switzer body.
    Editorial feel, generous sizing, tight tracking on display.
    ========================================================================== */
 
@@ -298,16 +298,16 @@
 
        Root-level keeps the literal fallbacks so the DS still works in
        environments without next/font (Storybook, plain HTML, etc.) — there
-       the quoted "Clash Display" / "Switzer" / "Geist Mono" need to be
+       the quoted "Satoshi" / "Switzer" / "Geist Mono" need to be
        loadable (e.g. locally installed or loaded via @font-face elsewhere).
 
        Want a different typeface? Override --ds-font-display / --ds-font-sans
        at consumer body scope and you are done (override --ds-font-display in your globals.css). */
-  --ds-font-display: "Clash Display", system-ui, sans-serif;
+  --ds-font-display: "Satoshi", system-ui, sans-serif;
   --ds-font-sans: "Switzer", system-ui, -apple-system, sans-serif;
   --ds-font-mono: "Geist Mono", ui-monospace, "SF Mono", monospace;
 
-  /* --- Display Font Weight (Clash Display looks best at 400) --- */
+  /* --- Display Font Weight (Satoshi looks best at 400) --- */
   --ds-font-display-weight: 400;
 
   /* --- Font Sizes --- */
@@ -337,7 +337,7 @@
   --ds-weight-light: 300;
   --ds-weight-normal: 400;
   --ds-weight-medium: 500;
-  --ds-weight-semibold: 600;
+  --ds-weight-semibold: 500;
   --ds-weight-bold: 700;
 
   /* --- Line Heights --- */
@@ -361,7 +361,7 @@
    above). Without this, the var(--font-*, fallback) would always hit the
    fallback because --font-* is not in scope at :root. */
 body {
-  --ds-font-display: var(--font-display, "Clash Display"), system-ui, sans-serif;
+  --ds-font-display: var(--font-display, "Satoshi"), system-ui, sans-serif;
   --ds-font-sans: var(--font-sans, "Switzer"), system-ui, -apple-system, sans-serif;
   --ds-font-mono: var(--font-geist-mono, "Geist Mono"), ui-monospace, "SF Mono", monospace;
 }

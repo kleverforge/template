@@ -32,7 +32,7 @@ export default function HomePage() {
             <h2 className="ds-text-base ds-font-semibold">Mono-light by default</h2>
           </div>
           <p className="ds-text-sm ds-text-secondary">
-            Geist Mono, Clash Display and Switzer ship preloaded. Pick one, drop the others, or swap
+            Satoshi, Switzer and Geist Mono ship preloaded. Pick one, drop the others, or swap
             for a different family in <code>app/layout.tsx</code>.
           </p>
         </article>
@@ -53,10 +53,10 @@ export default function HomePage() {
       <section className="ds-mt-12 ds-text-sm ds-text-tertiary">
         <p>
           Need a refresher on Klever-specific concepts, prompts, or pitfalls? See{' '}
-          <a href="https://klever-forge.test" className="ds-text-primary">
+          <a href="https://kleverforge.com" className="ds-text-primary">
             klever-forge
-          </a>{' '}
-          (the educational site).
+          </a>
+          .
         </p>
       </section>
     </main>
