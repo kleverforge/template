@@ -7,7 +7,7 @@ A clean Next.js starter for any project on the Klever blockchain. Open it in Cla
 - **Next.js 16** (App Router), **React 19**, **TypeScript**
 - **Forge DS** - a CSS design system, vendored locally in `src/forge-ds/`. No external dependency.
 - **Theme switching** - dark default, light, system, via `next-themes`
-- **Three preloaded typefaces**: Clash Display (display), Switzer (body), Geist Mono (code)
+- **Three preloaded typefaces**: Satoshi (display), Switzer (body), Geist Mono (code)
 - **Lucide icons** for the icon set
 
 ## Local development

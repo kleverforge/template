@@ -8,7 +8,7 @@ A clean Next.js starter for projects on the Klever blockchain. Open in Claude Co
 - Forge DS - vendored locally at `src/forge-ds/forge-ds.css` (single CSS file, no external dependency)
 - `next-themes` for dark/light/system theme switching
 - Lucide for icons (`lucide-react`)
-- Geist (sans + mono) + Clash Display + Switzer typefaces preloaded via `next/font`
+- Satoshi + Switzer + Geist Mono typefaces preloaded via `next/font`
 
 ## Forge DS in 30 seconds
 
@@ -61,7 +61,7 @@ src/
     components.css      # Project-specific BEM classes
   lib/
     utils.ts            # cn() helper (clsx)
-  fonts/                # ClashDisplay + Switzer .woff2 files
+  fonts/                # Satoshi + Switzer .woff2 files
 ```
 
 ## Commands
