@@ -2,6 +2,24 @@
   "name": "klever-forge-template",
   "version": "0.1.0",
   "private": true,
+  "description": "A clean Next.js starter for any project on the Klever blockchain. Forge DS bundled. Open in Claude Code and ship.",
+  "license": "MIT",
+  "homepage": "https://github.com/kleverforge/template",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kleverforge/template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kleverforge/template/issues"
+  },
+  "keywords": [
+    "klever",
+    "blockchain",
+    "nextjs",
+    "starter",
+    "template",
+    "claude-code"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",

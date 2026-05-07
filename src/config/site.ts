@@ -5,7 +5,7 @@ export const siteConfig = {
   title: 'klever-forge template. Your starting point for Klever projects.',
   description:
     'A clean Next.js starter with the Forge DS bundled, ready to build a project on the Klever blockchain with Claude Code.',
-  url: 'https://klever-forge-template.test',
+  url: 'https://example.com',
 
   nav: [],
 } as const

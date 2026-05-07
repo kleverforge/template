@@ -4286,8 +4286,8 @@ hr {
          <tbody>
            <tr class="ds-table__row--selected">
              <td class="ds-table__cell--checkbox"><input class="ds-checkbox" /></td>
-             <td>John</td>
-             <td>john@example.com</td>
+             <td>Name</td>
+             <td>name@example.com</td>
              <td class="ds-table__cell--shrink">...</td>
            </tr>
          </tbody>
