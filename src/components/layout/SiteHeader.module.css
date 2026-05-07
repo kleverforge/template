@@ -1,0 +1,32 @@
+.header {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 10;
+  border-block-end: 1px solid var(--ds-color-border);
+  background-color: color-mix(in srgb, var(--ds-color-bg) 88%, transparent);
+  backdrop-filter: blur(12px);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-space-4);
+  max-inline-size: 1100px;
+  margin-inline: auto;
+  padding-inline: var(--ds-space-6);
+  block-size: 64px;
+}
+
+.brand {
+  font-weight: var(--ds-weight-semibold);
+  letter-spacing: -0.02em;
+  color: var(--ds-color-text);
+  text-decoration: none;
+}
+
+.actions {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-3);
+}

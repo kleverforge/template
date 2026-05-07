@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import { GeistMono } from 'geist/font/mono'
 import { ThemeProvider } from '@/components/layout/ThemeProvider'
+import { SiteHeader } from '@/components/layout/SiteHeader'
+import { KleverWalletProvider } from '@/components/providers/KleverWalletProvider'
 import { siteConfig } from '@/config/site'
 import './globals.css'
 
@@ -42,7 +44,12 @@ export default function RootLayout({
       <body
         className={`${satoshi.variable} ${switzer.variable} ${GeistMono.variable}`}
       >
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <KleverWalletProvider>
+            <SiteHeader />
+            {children}
+          </KleverWalletProvider>
+        </ThemeProvider>
       </body>
     </html>
   )

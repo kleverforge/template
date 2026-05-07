@@ -1,0 +1,29 @@
+.wallet {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--ds-space-3);
+}
+
+.address {
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-text-sm);
+  color: var(--ds-color-text-secondary);
+  padding-inline: var(--ds-space-2);
+  padding-block: var(--ds-space-1);
+  background-color: var(--ds-color-surface-muted);
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-sm);
+}
+
+.error {
+  flex-basis: 100%;
+  margin: 0;
+  font-size: var(--ds-text-sm);
+  color: var(--ds-color-error);
+}
+
+.error a {
+  color: inherit;
+  text-underline-offset: 3px;
+}
