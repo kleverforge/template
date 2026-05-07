@@ -1,0 +1,19 @@
+@import "../forge-ds/forge-ds.css" layer(ds);
+@import "../styles/components.css";
+
+/* ============================================
+   BASE OVERRIDES
+   ============================================ */
+
+body {
+  background-color: var(--ds-color-bg);
+  color: var(--ds-color-text);
+  font-family: var(--ds-font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--ds-color-text);
+  color: var(--ds-color-bg);
+}
