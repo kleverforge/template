@@ -7,7 +7,6 @@
     "build": "next build",
     "start": "next start",
     "type-check": "tsc --noEmit",
-    "again": "next build && pm2 restart klever-forge-template",
     "lint": "eslint"
   },
   "dependencies": {

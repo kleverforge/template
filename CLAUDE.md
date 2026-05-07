@@ -1,142 +1,88 @@
-## Design System -> [DS_HEALTH.md](/Projects/infra/DS_HEALTH.md)
-For dev conventions (API shape, TanStack Query, Supabase, Redis, commit) -> [DEV_CONVENTIONS.md](/Projects/infra/DEV_CONVENTIONS.md)
-
-CONTROLLED MODE attivo. Regole DS, azioni aperte, metriche: tutto centralizzato in [DS_HEALTH.md](/Projects/infra/DS_HEALTH.md).
-Ops Triage: when the user describes a task, automatically call `ops_triage`. Details in DS_HEALTH.md section "Ops Triage".
-
----
-
 # CLAUDE.md - klever-forge-template
 
-## Project Overview
+A clean Next.js starter for projects on the Klever blockchain. Open in Claude Code, describe what you want to build, replace this template's pages with your own, ship.
 
-A clean Next.js starter for any project on the Klever blockchain. Designed to be cloned, opened in Claude Code, and customized into the user's actual project.
+## Stack
 
-**Stack:** Next.js 16 (App Router), React 19, TypeScript
-**Design system:** Forge DS, vendored locally in `src/forge-ds/`. No npm DS dependency.
-**Typography:** Clash Display (display) + Switzer (body) + Geist Mono (code), preloaded via next/font/local
-**Theme:** Dark default, light + system supported via `next-themes`
-**Audience:** non-developers building their first Klever project with AI tools
-**Language:** English only
+- Next.js 16 (App Router), React 19, TypeScript
+- Forge DS - vendored locally at `src/forge-ds/forge-ds.css` (single CSS file, no external dependency)
+- `next-themes` for dark/light/system theme switching
+- Lucide for icons (`lucide-react`)
+- Geist (sans + mono) + Clash Display + Switzer typefaces preloaded via `next/font`
 
-## What is Forge DS
+## Forge DS in 30 seconds
 
-Forge DS is the CSS design system that ships with this starter. It is a fork of an internal design system, vendored as plain CSS inside this repo so the starter has zero external DS dependency.
+The design system is one self-contained CSS file at `src/forge-ds/forge-ds.css`. Use any `ds-*` class in your JSX:
 
-The full source lives in `src/forge-ds/`:
-- `tokens/` - colors, typography, spacing, shadows, radii (about 140 `--ds-*` variables)
-- `base/` - reset, base typography
-- `components/` - 60 component classes (buttons, cards, inputs, modal, etc.)
-- `utilities/` - layout, spacing, text, sizing, states utilities
-- `index.css` - the single entry point that imports all of the above
-
-Use any `ds-*` class in your JSX. Override `--ds-*` tokens in `app/globals.css` to customize.
-
-To remove the DS entirely: delete the `src/forge-ds/` folder, drop the `@import "../forge-ds/index.css"` in `app/globals.css`, and bring your own CSS.
-
-## Critical Rules
-
-### 1. No Hardcoding
-
-Every literal value has a home in `src/config/`.
-
-| File | What belongs here |
-|------|-------------------|
-| `site.ts` | App name, description, nav items |
-| `routes.ts` | All route paths |
-
-Add more config files as the project grows (copy.ts, auth.ts, env.ts, etc.).
-
-### 2. Forge DS - Single Source of Truth
-
-The design system is vendored locally. Read source before using any class.
-
-| What you need | Where to look |
-|---------------|---------------|
-| Component classes (`ds-btn`, `ds-card`, etc.) | `src/forge-ds/components/` |
-| Token values (colors, spacing, radius) | `src/forge-ds/tokens/` |
-| Utility classes | `src/forge-ds/utilities/` |
-| Entry point | `src/forge-ds/index.css` |
-
-For DS styling rules, component-first approach, and usage patterns -> DS_HEALTH.md
-
-### 3. CSS Architecture
-
-```css
-/* globals.css */
-@import "../forge-ds/index.css" layer(ds);   /* All DS tokens, components, utilities */
-@import "../styles/components.css";           /* Project-specific component classes */
+```tsx
+<button className="ds-btn ds-btn--primary">Click</button>
+<div className="ds-card ds-card__body">...</div>
+<h1 className="ds-hero-title">Hello</h1>
 ```
 
-Three layers:
-1. **Forge DS** - vendored in `src/forge-ds/` (`ds-*` prefix)
-2. **Project component classes** - in `src/styles/components.css` (BEM, no `ds-` prefix)
-3. **Base styles** - in `globals.css` (body, selection, font fallbacks)
-
-### 4. Adding a New Page
-
-1. Create `src/app/your-page/page.tsx`
-2. Add route to `src/config/routes.ts`
-3. (Optional) add nav item to `src/config/site.ts`
-
-### 5. Overriding Design Tokens
-
-Add overrides in `globals.css`:
+To customize, override `--ds-*` variables in `src/app/globals.css`:
 
 ```css
 :root {
-  --ds-font-display: "Inter", sans-serif;
-  --ds-radius-xl: 12px;
   --ds-color-bg: #0a0a0a;
+  --ds-radius-md: 12px;
+  --ds-font-display: "Inter", sans-serif;
 }
 ```
 
-## Project Architecture
+To remove the DS entirely: delete `src/forge-ds/`, drop the import line in `src/app/globals.css`, bring your own CSS. Nothing else depends on it.
+
+## Style guidelines
+
+- Prefer canonical DS classes (`ds-hero-title`, `ds-section-title`, `ds-overline`, `ds-stat-number`) over stacked utility soup. If a heading has 3+ typography utilities (size + weight + color + tracking + transform), there is probably a single canonical class for it. Look in `src/forge-ds/forge-ds.css`.
+- For project-local CSS not covered by the DS, use BEM (no `ds-` prefix) in `src/styles/components.css`. All values must come from `var(--ds-*)` tokens, not hardcoded colors or spacing.
+- No inline styles. No `!important` without a documented reason.
+- TypeScript: never `any`. Use `unknown` plus type narrowing.
+
+## Project structure
 
 ```
 src/
   app/
-    layout.tsx          # Root layout (fonts, ThemeProvider)
+    layout.tsx          # Root layout (fonts + ThemeProvider)
     globals.css         # Forge DS import + base styles
-    page.tsx            # Landing page (replace this with your project)
+    page.tsx            # Landing page (replace this)
   components/
     layout/
       ThemeProvider.tsx # next-themes wrapper
     ui/
-      ThemeToggle.tsx   # Light/dark/system toggle
+      ThemeToggle.tsx   # light/dark/system toggle
   config/
     site.ts             # name, title, description
     routes.ts           # ROUTES const
-  forge-ds/             # The vendored CSS design system
-    tokens/             # colors, typography, spacing, shadows, radii
-    base/               # reset, base typography
-    components/         # 60 component CSS files
-    utilities/          # layout, spacing, text, sizing, states
-    index.css           # single import entry
-    js/theme.js         # vanilla theme switcher (unused, kept for reference)
+  forge-ds/
+    forge-ds.css        # The vendored CSS design system
   styles/
-    components.css      # project-specific BEM classes (currently empty)
+    components.css      # Project-specific BEM classes
   lib/
     utils.ts            # cn() helper (clsx)
-  fonts/                # ClashDisplay + Switzer woff2 files
+  fonts/                # ClashDisplay + Switzer .woff2 files
 ```
 
-## Quick Reference
+## Commands
 
 ```
-Local URL:      http://klever-forge-template.test (PM2 + Caddy, port 4019)
-Type check:     npm run type-check
-Build:          npm run build && pm2 restart klever-forge-template
-Lint:           npm run lint
-Forge DS source: src/forge-ds/
-GitHub:         private during initial setup. Public-facing copy uses "coming soon".
+npm run dev         # start dev server (default port 3000)
+npm run build       # production build
+npm run start       # run the production build
+npm run type-check  # TypeScript check
+npm run lint        # ESLint
 ```
 
-## End-of-Session Checklist
+## Adding a new page
 
-For DS checklist (CONTROLLED MODE, compliance, build, git) -> [DS_HEALTH.md](/Projects/infra/DS_HEALTH.md)
+1. Create `src/app/your-page/page.tsx`
+2. Add route to `src/config/routes.ts`
+3. (Optional) add a nav entry to `src/config/site.ts`
 
-Project-specific:
-- [ ] No personal-identity tokens in any file (see local memory: `feedback_no_user_identity.md`)
-- [ ] No upstream-fork identifiers in source (Forge DS is the local name)
-- [ ] All copy is in English
+## Working with Claude Code on this project
+
+- Describe what you want in plain English. One change per prompt is easier to review than three bundled.
+- Before approving a change, ask Claude what it changed and why. The answer should match your prompt.
+- Anything touching wallet logic, signing, or addresses: read carefully before approving.
+- Never paste your wallet seed phrase anywhere, including into Claude.
