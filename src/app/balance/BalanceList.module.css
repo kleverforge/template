@@ -1,0 +1,127 @@
+/* List of asset rows */
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-2);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
+  gap: var(--ds-space-4);
+  align-items: center;
+  padding: var(--ds-space-4);
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-md);
+  background-color: var(--ds-color-surface);
+  transition: border-color 140ms ease;
+}
+
+.row:hover {
+  border-color: var(--ds-color-text-tertiary);
+}
+
+.icon {
+  inline-size: 40px;
+  block-size: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: block;
+  background-color: var(--ds-color-surface-muted);
+}
+
+.iconText {
+  font-family: var(--ds-font-mono);
+  font-size: 11px;
+  font-weight: var(--ds-weight-semibold);
+  color: var(--ds-color-static-white);
+  letter-spacing: 0.04em;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-inline-size: 0;
+}
+
+.name {
+  font-size: var(--ds-text-base);
+  color: var(--ds-color-text);
+  letter-spacing: -0.01em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ticker {
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-text-xs);
+  color: var(--ds-color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.amount {
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-text-lg);
+  color: var(--ds-color-text);
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Empty / loading / error state */
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ds-space-3);
+  padding-block: var(--ds-space-12);
+  color: var(--ds-color-text-secondary);
+  text-align: center;
+  border: 1px dashed var(--ds-color-border);
+  border-radius: var(--ds-radius-md);
+}
+
+.empty p {
+  margin: 0;
+  font-size: var(--ds-text-sm);
+}
+
+.emptyError {
+  border-color: var(--ds-color-error);
+  color: var(--ds-color-error);
+}
+
+.spin {
+  animation: kfb-spin 800ms linear infinite;
+}
+
+@keyframes kfb-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spin { animation: none; }
+}
+
+/* Mobile tweaks */
+
+@media (max-width: 480px) {
+  .row {
+    padding: var(--ds-space-3);
+    gap: var(--ds-space-3);
+  }
+  .name {
+    font-size: var(--ds-text-sm);
+  }
+  .amount {
+    font-size: var(--ds-text-base);
+  }
+}
